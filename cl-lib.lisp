@@ -24,6 +24,13 @@
   ))
 )
 
+(defun cptable (m)
+  (let ((n (make-hash-table)))
+    (maphash (lambda (k v) (setf (gethash k n) v)) m)
+    n
+  )
+)
+
 (defun tassoc (m &rest kv)
   (reduce
     (lambda (n p) (setf (gethash (first p) n) (second p)) n)
